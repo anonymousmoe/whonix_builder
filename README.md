@@ -16,6 +16,10 @@ cd $PWD/whonix_builder
 ```
 docker build .
 ```
+* Restart Docker Daemon:
+```
+systemctl restart docker
+```
 ### Run Docker Container without ENV variables:
 The Dockerfile already contains default values for all environment variables which will be included in the image.
 If you execute `docker run` without assigning new values, the defaults will apply.
