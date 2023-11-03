@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 sudo -u user /bin/bash -c "{ mkdir -p ~/logs && wget https://www.whonix.org/keys/derivative.asc -O ~/derivative.asc && \
 	gpg --keyid-format long --import --import-options show-only --with-fingerprint ~/derivative.asc && \
 	gpg --import ~/derivative.asc && gpg --check-sigs 916B8D99C38EAF5E8ADC7A2A8D66066A2EEACCDA; } | tee ~/logs/key.log && \
