@@ -41,7 +41,7 @@ docker run --name whonix_builder -it --privileged \
 ```
 ### Environment Variables
 
-|  Variable                                             | Description                                                                                          
+|  Variable                                             | Values                                                                                          
 | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------|
 | WHONIX_TAG        | Any available git tag on the [official derivative-maker repository](https://github.com/Whonix/derivative-maker/tags)  		 |
 | TBB_VERSION       | Latest Tor Browser version indicated in [downloads.json]( https://aus1.torproject.org/torbrowser/update_3/release/downloads.json)  |
