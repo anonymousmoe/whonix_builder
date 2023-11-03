@@ -39,8 +39,7 @@ ENV TARGET="raw"
 ENV ARCH="amd64"
 ENV REPO="true"
 
-COPY systemd_init.sh /
-COPY whonix_starter.sh /
+COPY systemd_init.sh whonix_starter.sh /
 
 VOLUME [ "/home/user" ]
 
