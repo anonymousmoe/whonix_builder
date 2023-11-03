@@ -53,6 +53,10 @@ The container's home directory is mounted as a volume which can be bound to any 
 Example: `--volume /home/user/shared:/home/user` would bind a folder named shared in the host's home directory
 to the container's home directory, which is where all build files will be located.
 
+### Systemd
+systemd_init achieves a full integration of systemd for the purpose of enabling apt-cacher-ng.
+You can add additional services at will, such as for example dnscrypt.  
+
 ## Useful Links
 * https://www.whonix.org/wiki/Dev/Build_Documentation/VM
 * https://www.whonix.org/wiki/Dev/Source_Code_Intro
