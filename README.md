@@ -20,14 +20,14 @@ docker build .
 ```
 systemctl restart docker
 ```
-### Run Docker Container without ENV variables:
+### Run whonix_builder without ENV variables:
 The Dockerfile already contains default values for all environment variables which will be included in the image.
 If you execute `docker run` without assigning new values, the defaults will apply.
 ```
 docker run --name whonix_builder -it --privileged \
 	--volume <HOST_DIR>:/home/user <IMAGE_ID> 
 ```
-### Run Docker Container with ENV variables:
+### Run whonix_builder with ENV variables:
 ```
 docker run --name whonix_builder -it --privileged \
 	--env 'WHONIX_TAG=17.0.5.9-developers-only' \
