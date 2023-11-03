@@ -4,7 +4,7 @@
 ## Usage
 
 ### Building Docker Image
-* Cloning whonix_builder repo:
+* Clone whonix_builder repo:
 ```
 git clone https://github.com/anonymousmoe/whonix_builder -b main
 ```
@@ -40,13 +40,17 @@ docker run --name whonix_builder -it --privileged \
 	--volume <HOST_DIR>:/home/user <IMAGE_ID> 
 ```
 ### Environment Variables
-* WHONIX_TAG = Any available git tag on the [official derivative-maker repository](https://github.com/Whonix/derivative-maker/tags)
-* TBB_VERSION = Latest Tor Browser version indicated in [downloads.json]( https://aus1.torproject.org/torbrowser/update_3/release/downloads.json)
-* FLAVOR_GW = derivative-maker --flavor option for the gateway image | `whonix-gateway-xfce` `whonix-gateway-cli`
-* FLAVOR_WS = derivative-maker --flavor option for the workstation image | `whonix-workstation-xfce` `whonix-workstation-cli`
-* TARGET = derivative-maker --target option | `raw` `qcow2` `virtualbox` `utm`
-* ARCH = derivative-maker --target arch | `amd64` `arm64` `i386`
-* REPO = derivative-maker --target repo | `true` `false`
+
+|  Variable                                             | Description                                                                                          
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------|
+| WHONIX_TAG        | Any available git tag on the [official derivative-maker repository](https://github.com/Whonix/derivative-maker/tags)  		 |
+| TBB_VERSION       | Latest Tor Browser version indicated in [downloads.json]( https://aus1.torproject.org/torbrowser/update_3/release/downloads.json)  |
+| FLAVOR_GW         | derivative-maker --flavor option for the gateway image | `whonix-gateway-xfce` `whonix-gateway-cli`                                |
+| FLAVOR_WS         | derivative-maker --flavor option for the workstation image | `whonix-workstation-xfce` `whonix-workstation-cli`                    |
+| TARGET 	    | derivative-maker --target ${TARGET} option | `raw` `qcow2` `virtualbox` `utm`                                            			 |
+| ARCH              | derivative-maker --arch ${ARCH} option | `amd64` `arm64` `i386`               								 |
+| REPO              | derivative-maker --repo ${REPO} option | `true` `false` 											 |
+                                                      
 
 ### Volume
 The container's home directory is mounted as a volume which can be bound to any location of your choosing.
