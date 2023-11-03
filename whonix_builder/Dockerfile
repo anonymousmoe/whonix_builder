@@ -26,8 +26,7 @@ RUN apt-get update && apt-get install -y apt-transport-https ca-certificates && 
 	### user account ###
 	adduser --quiet --disabled-password --home /home/user --gecos 'user,,,,' user && \
 	echo "user:super" | chpasswd && \
-	sudo adduser user sudo && \
-	echo '%sudo ALL=(ALL:ALL) NOPASSWD:ALL' | sudo EDITOR=tee visudo -f /etc/sudoers.d/dist-build-sudo-passwordless >/dev/null
+	sudo adduser user sudo
 
 FROM baseimage
 
