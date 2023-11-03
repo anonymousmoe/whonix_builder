@@ -45,11 +45,11 @@ docker run --name whonix_builder -it --privileged \
 | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------|
 | WHONIX_TAG        | Any available git tag on the [official derivative-maker repository](https://github.com/Whonix/derivative-maker/tags)  		 |
 | TBB_VERSION       | Latest Tor Browser version indicated in [downloads.json]( https://aus1.torproject.org/torbrowser/update_3/release/downloads.json)  |
-| FLAVOR_GW         | derivative-maker --flavor option for the gateway image | `whonix-gateway-xfce` `whonix-gateway-cli`                                |
-| FLAVOR_WS         | derivative-maker --flavor option for the workstation image | `whonix-workstation-xfce` `whonix-workstation-cli`                    |
-| TARGET 	    | derivative-maker --target ${TARGET} option | `raw` `qcow2` `virtualbox` `utm`                                            			 |
-| ARCH              | derivative-maker --arch ${ARCH} option | `amd64` `arm64` `i386`               								 |
-| REPO              | derivative-maker --repo ${REPO} option | `true` `false` 											 |
+| FLAVOR_GW         | `whonix-gateway-cli` `whonix-gateway-xfce`                                |
+| FLAVOR_WS         | `whonix-workstation-cli` `whonix-workstation-xfce`                   |
+| TARGET 	    | `virtualbox` `qcow2` `raw` `utm`                                           			 |
+| ARCH              | `amd64` `arm64` `i386`               								 |
+| REPO              | `true` `false` 											 |
                                                       
 
 ### Volume
