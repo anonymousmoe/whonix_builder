@@ -1,5 +1,5 @@
 # whonix_builder
- Utilizes a debian:bookworm docker container that automatically verifies and builds Whonix images, incorporating the official derivative-maker build script, while including environment variables to customize every available build option and log files of the entire build process.
+ Utilizes a debian:bookworm Docker Container that automatically verifies and builds Whonix images, incorporating the official derivative-maker build script, while including environment variables to customize every available build option and log files of the entire build process.
  
 ## Usage
 
@@ -12,18 +12,18 @@ git clone https://github.com/anonymousmoe/whonix_builder -b main
 ```
 cd $PWD/whonix_builder
 ```
-* Start Docker image creation:
+* Start Docker Image creation:
 ```
 docker build .
 ```
-### Run Docker container without ENV variables:
+### Run Docker Container without ENV variables:
 The Dockerfile already contains default values for all environment variables which will be included in the image.
 If you execute `docker run` without assigning new values, the defaults will apply.
 ```
 docker run --name whonix_builder -it --privileged \
 	--volume <HOST_DIR>:/home/user <IMAGE_ID> 
 ```
-### Run Docker container with ENV variables:
+### Run Docker Container with ENV variables:
 ```
 docker run --name whonix_builder -it --privileged \
 	--env 'WHONIX_TAG=17.0.5.9-developers-only' \
