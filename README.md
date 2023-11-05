@@ -1,5 +1,5 @@
 # whonix_builder
- Utilizes a debian:bookworm Docker Container that automatically verifies and builds Whonix images, incorporating the official derivative-maker build script, while including environment variables to customize every available build option and log files of the entire build process.
+Utilizes a debian:bookworm Docker Container that automatically verifies and builds Whonix images, incorporating the official derivative-maker build script, while including environment variables to customize every available build option and log files of the entire build process. Additionally, dnscrypt-proxy and the ability to use onion sources with torified apt-cacher-ng offer maximum privacy.
  
 ## Usage
 
@@ -25,7 +25,7 @@ The Dockerfile already contains default values for all environment variables whi
 If you execute `docker run` without assigning new values, the defaults will apply.
 ```
 docker run --name whonix_builder -it --privileged \
-	--volume <HOST_DIR>:/home/user <IMAGE_ID> 
+	--volume --dns 127.0.2.1 <HOST_DIR>:/home/user <IMAGE_ID> 
 ```
 ### Run whonix_builder with ENV variables:
 ```
@@ -37,7 +37,9 @@ docker run --name whonix_builder -it --privileged \
 	--env 'TARGET=raw' \
 	--env 'ARCH=amd64' \
 	--env 'REPO=true' \
-	--volume <HOST_DIR>:/home/user <IMAGE_ID> 
+	--env 'APT_ONION=false' \
+	--volume <HOST_DIR>:/home/user \
+	--dns 127.0.2.1 <IMAGE_ID> 
 ```
 ### Environment Variables
 
@@ -50,12 +52,38 @@ docker run --name whonix_builder -it --privileged \
 | TARGET 	    | `virtualbox` `qcow2` `raw` `utm`                                           			 |
 | ARCH              | `amd64` `arm64` `i386`               								 |
 | REPO              | `true` `false` 											 |
+| APT_ONION         | `true` `false` 											 |
                                                       
 
 ### Volume
 The container's home directory is mounted as a volume which can be bound to any location of your choosing.
 Example: `--volume /home/user/shared:/home/user` would bind a folder named shared in the host's home directory
 to the container's home directory, which is where all build files will be located.
+
+### DNSCrypt
+dnscrypt-proxy is listening @ 127.0.2.1:53 using default resolver cloudflare @ 1.0.0.1
+* server settings can be changed in `dnscrypt-proxy.toml`
+* resolver data and minisig can be updated in `public-resolvers.md` and `public-resolvers.md.minisig`
+
+### APT Onion Sources & Torified apt-cacher-ng
+Assigning the value `true` to environment variable `APT_ONION` triggers a set of commands
+that adds `--connection onion` to the derivative-maker arguments during build and appends the following entries to 
+`/etc/apt-cacher-ng/acng.conf`, which will enable torified apt-cacher:
+```
+PassThroughPattern: .*
+BindAddress: localhost
+SocketPath: /run/apt-cacher-ng/socket
+Port:3142
+Proxy: http://127.0.0.1:3142
+```
+* https://www.whonix.org/wiki/Build_Configuration#APT_Onion_Build_Sources
+
+### Log Files
+Can be found in the volume which mounts the container's home directory.									 |
+DNSCrypt 
+* `query.log` `nx.log` `dnscrypt-proxy.log`
+Build: 
+* `key.log` `git.log` `build_ws.log` `build_gw.log`
 
 ### Systemd
 systemd_init achieves a full integration of systemd for the purpose of enabling apt-cacher-ng.
