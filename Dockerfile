@@ -43,13 +43,10 @@ ENV ARCH="amd64"
 ENV REPO="true"
 ENV APT_ONION="false"
 
-COPY systemd_init.sh starter.sh /
+COPY systemd_init.sh starter.sh 50_user.conf /
 COPY dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
 COPY public-resolvers.md public-resolvers.md.minisig /var/cache/dnscrypt-proxy
 COPY dnscrypt-proxy.service /usr/lib/systemd/system/dnscrypt-proxy.service
-COPY 50_user.conf /tmp/50_user.conf
-
-RUN ${APT_ONION} && mv /tmp/50_user.conf /lib/systemd/system/apt-cacher-ng.service.d/50_user.conf || true
 
 VOLUME [ "/home/user" ]
 
