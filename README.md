@@ -79,11 +79,9 @@ Proxy: http://127.0.0.1:3142
 * https://www.whonix.org/wiki/Build_Configuration#APT_Onion_Build_Sources
 
 ### Log Files
-Can be found in the volume which mounts the container's home directory.									 |
-DNSCrypt 
-* `query.log` `nx.log` `dnscrypt-proxy.log`
-Build: 
-* `key.log` `git.log` `build_ws.log` `build_gw.log`
+Can be found in the volume which mounts the container's home directory.
+* DNSCrypt: `query.log` `nx.log` `dnscrypt-proxy.log`
+* Build: `key.log` `git.log` `build_ws.log` `build_gw.log`
 
 ### Systemd
 systemd_init achieves a full integration of systemd for the purpose of enabling apt-cacher-ng.
