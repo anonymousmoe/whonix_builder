@@ -67,7 +67,7 @@ dnscrypt-proxy is listening @ 127.0.2.1:53 using default resolver cloudflare @ 1
 
 ### APT Onion Sources & Torified apt-cacher-ng
 Assigning the value `true` to environment variable `APT_ONION` triggers a set of commands
-that adds `--connection onion` to the derivative-maker arguments during build and appends the following entries to 
+that add `--connection onion` to the derivative-maker arguments during build and appends the following entries to 
 `/etc/apt-cacher-ng/acng.conf`, which will enable torified apt-cacher:
 ```
 PassThroughPattern: .*
