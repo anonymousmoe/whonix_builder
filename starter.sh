@@ -3,7 +3,8 @@
 set -e
 
 ### if APT_ONION true ###
-	${APT_ONION} && ONION="--connection onion" && printf "PassThroughPattern: .*\nBindAddress: localhost\nSocketPath: /run/apt-cacher-ng/socket\nPort:3142\nProxy: http://127.0.0.1:3142\nAllowUserPorts: 0" \
+	${APT_ONION} && ONION="--connection onion" && mv /50_user.conf /lib/systemd/system/apt-cacher-ng.service.d/50_user.conf && \
+	printf "PassThroughPattern: .*\nBindAddress: localhost\nSocketPath: /run/apt-cacher-ng/socket\nPort:3142\nProxy: http://127.0.0.1:3142\nAllowUserPorts: 0" \
 	>> /etc/apt-cacher-ng/acng.conf && echo "Acquire::BlockDotOnion \"false\";" > /etc/apt/apt.conf.d/30user && \
 	systemctl daemon-reload && systemctl start tor.service && \
 	systemctl restart apt-cacher-ng.service && systemctl status apt-cacher-ng.service && sleep 1
