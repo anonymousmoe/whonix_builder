@@ -25,7 +25,7 @@ The Dockerfile already contains default values for all environment variables whi
 If you execute `docker run` without assigning new values, the defaults will apply.
 ```
 docker run --name whonix_builder -it --privileged \
-	--volume --dns 127.0.2.1 <HOST_DIR>:/home/user <IMAGE_ID> 
+	--volume <HOST_DIR>:/home/user --dns 127.0.2.1 <IMAGE_ID> 
 ```
 ### Run whonix_builder with ENV variables:
 ```
